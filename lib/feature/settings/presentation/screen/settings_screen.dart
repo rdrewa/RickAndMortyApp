@@ -1,11 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
-  final int id;
+import '../../../common/presentation/widget/app_drawer.dart';
 
-  const SettingsScreen(this.id, {super.key});
+@RoutePage()
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(appBar: AppBar(), body: const Center(child: Text('Settings')));
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(),
+      drawer: const AppDrawer(),
+      body: const Center(child: Text('Settings')));
 }
