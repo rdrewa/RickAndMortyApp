@@ -1,11 +1,41 @@
 # See https://www.dartlang.org/guides/libraries/private-files
 
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
 # Files and directories created by pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
 .packages
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
+
+# Generated
+*.g.dart
+*.gr.dart
+*.mocks.dart
+*.freezed.dart
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
@@ -25,3 +55,17 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+/ios/Podfile.lock
+**/ios/Flutter/tmp.xcconfig
