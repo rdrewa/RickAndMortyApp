@@ -4,9 +4,9 @@ part 'info.g.dart';
 
 @JsonSerializable()
 class Info {
-  final int count;
+  final int? next;
 
-  Info({required this.count});
+  Info({required this.next});
 
   factory Info.fromJson(Map<String, dynamic> data) => _$InfoFromJson(data);
 
