@@ -11,8 +11,10 @@ class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
   final List<CharacterInfo> data;
+  final bool canLoad;
+  final int? next;
 
-  HomeLoaded(this.data);
+  HomeLoaded(this.data, this.canLoad, this.next);
 
   @override
   List<Object?> get props => [data];

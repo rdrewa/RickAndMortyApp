@@ -17,13 +17,32 @@ class HomeNotifier extends _$HomeNotifier {
   HomeState build() => HomeInitial();
 
   Future<void> getCharacterList() async {
+    int page = 1;
+    HomeLoaded? stateLoaded;
     await Future.delayed(Duration.zero);
+
+    if (state is HomeLoaded) {
+      stateLoaded = state as HomeLoaded;
+      if (!stateLoaded.canLoad) {
+        state = HomeLoaded(stateLoaded.data, false, null);
+        return;
+      }
+      if (stateLoaded.next != null) {
+        page = stateLoaded.next!;
+      }
+    }
+
     state = HomeLoading();
 
-    (await _getCharacterListUsecase()).fold((fail) {
+    (await _getCharacterListUsecase(page)).fold((fail) {
       state = HomeFailure(fail.message);
     }, (data) {
-      state = HomeLoaded(data);
+      final int? next = data.info.next;
+      final bool canLoad = next != null;
+      final List<CharacterInfo> results = stateLoaded != null
+          ? [...stateLoaded.data, ...data.results]
+          : data.results;
+      state = HomeLoaded(results, canLoad, next);
     });
   }
 }

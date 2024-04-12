@@ -24,10 +24,19 @@ class HomeScreen extends HookConsumerWidget {
         body: switch (state) {
           HomeInitial() => const SizedBox.shrink(),
           HomeLoading() => const CircularProgressIndicator(),
-          HomeLoaded() => ListView.builder(
-              itemCount: state.data.length,
-              itemBuilder: (context, index) =>
-                  CharacterItem(item: state.data[index])),
+          HomeLoaded() => NotificationListener<ScrollEndNotification>(
+              onNotification: (scrollEnd) {
+                final metrics = scrollEnd.metrics;
+                if (metrics.atEdge && metrics.pixels != 0) {
+                  ref.read(homeNotifierProvider.notifier).getCharacterList();
+                }
+                return true;
+              },
+              child: ListView.builder(
+                  itemCount: state.data.length,
+                  itemBuilder: (context, index) =>
+                      CharacterItem(item: state.data[index])),
+            ),
           HomeFailure() => Center(child: Text(state.message)),
         });
   }
