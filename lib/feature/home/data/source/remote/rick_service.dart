@@ -24,8 +24,11 @@ class RickGraphService implements RickService {
   Future<Data?> getCharacterList(int page) async {
     try {
       QueryResult result = await client.query(QueryOptions(document: gql("""
-           query {
-              characters {
+           query getCharacterList(\$page: Int) {
+              characters(page: \$page) {
+                info {
+                  next
+                }
                 results {
                   name
                   id
@@ -34,7 +37,7 @@ class RickGraphService implements RickService {
                 }
               }
             }
-            """)));
+            """), variables: {'page': page}));
       if (result.hasException) {
         throw Exception(result.exception);
       } else {

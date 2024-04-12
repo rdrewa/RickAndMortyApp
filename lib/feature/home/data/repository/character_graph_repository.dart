@@ -3,10 +3,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '/core/error/failure.dart';
-import '../../domain/model/character_info.dart';
 import '../../domain/repository/character_repository.dart';
 import '../source/remote/rick_service.dart';
 import '../model/data.dart';
+import '../model/characters.dart';
 
 part 'character_graph_repository.g.dart';
 
@@ -21,14 +21,14 @@ class CharacterGraphRepository implements CharacterRepository {
   CharacterGraphRepository(this._service);
 
   @override
-  Future<Either<Failure, List<CharacterInfo>>> getCharacterList() async {
+  Future<Either<Failure, Characters>> getCharacterList(int page) async {
     try {
-      final Data? data = await _service.getCharacterList(1);
+      final Data? data = await _service.getCharacterList(page);
 
       if (data == null) {
         return const Left(ServerFailure('Server Failure: null ResponseData'));
       } else {
-        return Right(data.characters.results);
+        return Right(data.characters);
       }
     } on OperationException catch (e) {
       return Left(ServerFailure(e.toString()));
