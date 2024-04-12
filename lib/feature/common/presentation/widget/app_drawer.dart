@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '/app/app_router.dart';
@@ -9,13 +10,20 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Drawer(
           child: ListView(
-        children: const [
-          DrawerHeader(child: Text('Rick & Morty Menu')),
-          DrawerTile(title: 'Home', icon: Icons.home, route: HomeRoute()),
+        children: [
+          DrawerHeader(child: Text('app.menu'.tr())),
           DrawerTile(
-              title: 'Favorite', icon: Icons.star, route: FavoriteRoute()),
+              title: 'home.title'.tr(),
+              icon: Icons.home,
+              route: const HomeRoute()),
           DrawerTile(
-              title: 'Settings', icon: Icons.settings, route: SettingsRoute())
+              title: 'favorite.title'.tr(),
+              icon: Icons.star,
+              route: const FavoriteRoute()),
+          DrawerTile(
+              title: 'settings.title'.tr(),
+              icon: Icons.settings,
+              route: const SettingsRoute())
         ],
       ));
 }
