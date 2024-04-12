@@ -13,7 +13,7 @@ class CharacterItem extends StatelessWidget {
   Widget build(BuildContext context) => Card(
         child: ListTile(
           leading: Image(image: NetworkImage(item.image)),
-          title: Text(item.name, style: context.titleMedium),
+          title: Text('[${item.id}] ${item.name}', style: context.titleMedium),
           subtitle: Text(item.status, style: context.bodySmall),
           trailing: StatusIcon(status: item.status),
         ),
