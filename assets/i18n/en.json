@@ -4,7 +4,7 @@
     "menu": "Rick & Morty Menu"
   },
   "home": {
-    "title": "Home"
+    "title": "Characters"
   },
   "favorite": {
     "title": "Favorite"
@@ -14,5 +14,13 @@
   },
   "details": {
     "title": "Details"
+  },
+  "character": {
+    "gender": {
+      "human_male": "Man",
+      "human_female": "Woman",
+      "other_male": "Male",
+      "other_female": "Female"
+    }
   }
 }

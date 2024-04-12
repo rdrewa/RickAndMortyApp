@@ -4,7 +4,7 @@
     "menu": "Rick & Morty Menu"
   },
   "home": {
-    "title": "Główna"
+    "title": "Postacie"
   },
   "favorite": {
     "title": "Ulubione"
@@ -14,5 +14,13 @@
   },
   "details": {
     "title": "Szczegóły"
+  },
+  "character": {
+    "gender": {
+      "human_male": "Mężczyzna",
+      "human_female": "Kobieta",
+      "other_male": "Samiec",
+      "other_female": "Samica"
+    }
   }
 }
