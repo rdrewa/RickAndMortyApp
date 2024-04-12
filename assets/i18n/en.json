@@ -1,0 +1,18 @@
+{
+  "app": {
+    "title": "Rick & Morty App",
+    "menu": "Rick & Morty Menu"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "favorite": {
+    "title": "Favorite"
+  },
+  "settings": {
+    "title": "Settings"
+  },
+  "details": {
+    "title": "Details"
+  }
+}
