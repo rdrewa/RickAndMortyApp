@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../common/presentation/widget/app_drawer.dart';
 import '../widget/character_item.dart';
 import '../notifier/home_notifier.dart';
 
@@ -19,6 +20,7 @@ class HomeScreen extends HookConsumerWidget {
 
     return Scaffold(
         appBar: AppBar(title: const Text('Characters')),
+        drawer: const AppDrawer(),
         body: switch (state) {
           HomeInitial() => const SizedBox.shrink(),
           HomeLoading() => const CircularProgressIndicator(),
