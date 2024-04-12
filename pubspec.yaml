@@ -23,6 +23,7 @@ dependencies:
   auto_route: ^8.0.3
   google_fonts: ^4.0.4
   easy_localization: ^3.0.5
+  envied: ^0.5.4+1
 
 dev_dependencies:
   flutter_test:
@@ -35,8 +36,10 @@ dev_dependencies:
   mockito: ^5.4.4
   riverpod_test: ^0.1.4
   auto_route_generator: ^8.0.0
+  envied_generator: ^0.5.4+1
 
 flutter:
   uses-material-design: true
   assets:
+    - .env
     - assets/i18n/
