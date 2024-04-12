@@ -22,6 +22,7 @@ dependencies:
   flutter_hooks: ^0.18.6
   auto_route: ^8.0.3
   google_fonts: ^4.0.4
+  easy_localization: ^3.0.5
 
 dev_dependencies:
   flutter_test:
@@ -37,3 +38,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/i18n/
