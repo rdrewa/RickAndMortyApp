@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_morty_app/theme/app_card_theme.dart';
 import 'package:rick_morty_app/theme/app_custom_colors.dart';
 
 import 'app_app_bar_theme.dart';
@@ -16,7 +17,8 @@ class AppTheme {
       appBarTheme: AppAppBarTheme.lightTheme,
       extensions: [
         AppCustomColors.lightCustomColors.harmonized(AppColorScheme.lightScheme)
-      ]);
+      ],
+      cardTheme: AppCardTheme.lightTheme);
 
   static ThemeData darkMode = ThemeData.dark(useMaterial3: true).copyWith(
       brightness: Brightness.dark,
@@ -26,5 +28,6 @@ class AppTheme {
       appBarTheme: AppAppBarTheme.darkTheme,
       extensions: [
         AppCustomColors.darkCustomColors.harmonized(AppColorScheme.darkScheme)
-      ]);
+      ],
+      cardTheme: AppCardTheme.darkTheme);
 }

@@ -8,11 +8,11 @@ class AppTextTheme {
 
   static TextTheme _prepareTheme(ColorScheme colorScheme) => _fontTextTheme
       .apply(
-          bodyColor: colorScheme.onBackground,
-          displayColor: colorScheme.primary)
+          bodyColor: colorScheme.onPrimary,
+          displayColor: colorScheme.surfaceVariant)
       .copyWith(
           labelMedium: _fontTextTheme.labelMedium
-              ?.copyWith(color: colorScheme.tertiary));
+              ?.copyWith(color: colorScheme.inversePrimary));
 
   AppTextTheme._();
 
