@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../data/model/characters.dart';
-import '../repository/character_repository.dart';
+import '../../../common/domain/repository/character_repository.dart';
 
 part 'get_character_list_usecase.g.dart';
 

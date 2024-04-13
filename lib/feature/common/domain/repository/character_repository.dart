@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '/core/error/failure.dart';
 import '../../data/repository/character_graph_repository.dart';
-import '../../data/model/characters.dart';
+import '../../../home/data/model/characters.dart';
 
 part 'character_repository.g.dart';
 
