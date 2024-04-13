@@ -2,14 +2,15 @@ import 'dart:developer';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import 'graph_client.dart';
 import '../../../../home/data/model/character_info_data.dart';
+import '../../../../details/data/model/character_details_data.dart';
+import 'graph_client.dart';
 
 part 'rick_service.g.dart';
 
 abstract class RickService {
   Future<CharacterInfoData?> getCharacterList(int page);
-  Future<CharacterInfoData?> getCharacterDetails(int id);
+  Future<CharacterDetailsData?> getCharacterDetails(int id);
 }
 
 @riverpod
@@ -52,7 +53,7 @@ class RickGraphService implements RickService {
   }
 
   @override
-  Future<CharacterInfoData?> getCharacterDetails(int id) async {
+  Future<CharacterDetailsData?> getCharacterDetails(int id) async {
     try {
       QueryResult result = await client.query(QueryOptions(document: gql("""
            query characters(\$id: Int) {
@@ -83,7 +84,7 @@ class RickGraphService implements RickService {
         throw Exception(result.exception);
       } else {
         log(result.data.toString());
-        return CharacterInfoData.fromJson(result.data!);
+        return CharacterDetailsData.fromJson(result.data!);
       }
     } on Exception {
       rethrow;

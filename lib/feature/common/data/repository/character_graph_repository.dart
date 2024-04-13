@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '/core/error/failure.dart';
-import '../../domain/repository/character_repository.dart';
+import '../../../details/data/model/character_details_data.dart';
+import '../../../details/domain/model/character_details.dart';
 import '../../../home/data/model/character_info_data.dart';
 import '../../../home/data/model/characters.dart';
+import '../../domain/repository/character_repository.dart';
 import '../source/remote/rick_service.dart';
 
 part 'character_graph_repository.g.dart';
@@ -29,6 +32,23 @@ class CharacterGraphRepository implements CharacterRepository {
         return const Left(ServerFailure('Server Failure: null ResponseData'));
       } else {
         return Right(data.characters);
+      }
+    } on OperationException catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } on Exception catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CharacterDetails>> getCharacterDetaisl(int id) async {
+    try {
+      final CharacterDetailsData? data = await _service.getCharacterDetails(id);
+
+      if (data == null) {
+        return const Left(ServerFailure('Server Failure: null ResponseData'));
+      } else {
+        return Right(data.characterDetails);
       }
     } on OperationException catch (e) {
       return Left(ServerFailure(e.toString()));
