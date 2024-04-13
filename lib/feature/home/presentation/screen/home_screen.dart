@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/presentation/widget/app_drawer.dart';
+import '../../../common/presentation/widget/progress_wheel.dart';
 import '../widget/character_item.dart';
 import '../notifier/home_notifier.dart';
 
@@ -31,17 +32,12 @@ class HomeScreen extends HookConsumerWidget {
         drawer: const AppDrawer(),
         body: switch (state) {
           HomeInitial() => const SizedBox.shrink(),
-          HomeLoading() => const CircularProgressIndicator(),
+          HomeLoading() => const LargeProgressWheel(),
           HomeLoaded() => ListView.builder(
               controller: controller,
               itemCount: state.data.length + (state.canLoad ? 1 : 0),
               itemBuilder: (context, index) => index >= state.data.length
-                  ? Center(
-                      child: Container(
-                          width: 20,
-                          height: 20,
-                          margin: const EdgeInsets.all(40),
-                          child: const CircularProgressIndicator()))
+                  ? const SmallProgressWheel()
                   : CharacterItem(item: state.data[index])),
           HomeFailure() => Center(child: Text(state.message)),
         });
