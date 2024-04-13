@@ -34,6 +34,7 @@ class RickGraphService implements RickService {
                   id
                   status
                   image
+                  species
                 }
               }
             }

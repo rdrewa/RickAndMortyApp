@@ -9,12 +9,14 @@ class CharacterInfo extends Equatable {
   final String id;
   final String status;
   final String image;
+  final String species;
 
   const CharacterInfo(
       {required this.name,
       required this.id,
       required this.status,
-      required this.image});
+      required this.image,
+      required this.species});
 
   factory CharacterInfo.fromJson(Map<String, dynamic> data) =>
       _$CharacterInfoFromJson(data);
@@ -22,5 +24,5 @@ class CharacterInfo extends Equatable {
   Map<String, dynamic> toJson() => _$CharacterInfoToJson(this);
 
   @override
-  List<Object?> get props => [name, id, status, image];
+  List<Object?> get props => [name, id, status, image, species];
 }
