@@ -24,6 +24,6 @@ class DataList extends StatelessWidget {
         DataCard(
             label: 'character.gender'.tr(), text: details.speciesGender.tr()),
         DataCard(label: 'character.origin'.tr(), text: details.origin.name),
-        DataCard(label: 'character.species'.tr(), text: details.species),
+        DataCard(label: 'character.location'.tr(), text: details.location.name),
       ]));
 }
