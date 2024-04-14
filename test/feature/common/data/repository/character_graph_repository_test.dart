@@ -45,4 +45,33 @@ void main() {
       expect(result, equals(const Left(ServerFailure('Operation Failure'))));
     });
   });
+
+  group('Get charater details', () {
+    test(
+        'Should return CharacterDetails object when a call to service is successful',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1))
+          .thenAnswer((_) async => testCharacterDetailsData1);
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(result, equals(Right(testCharacterDetails1)));
+    });
+
+    test('Should return server failure when a call to service is unsuccessful',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1))
+          .thenThrow(OperationException());
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Operation Failure'))));
+    });
+  });
 }
