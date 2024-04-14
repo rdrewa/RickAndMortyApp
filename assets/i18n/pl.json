@@ -16,7 +16,16 @@
     "title": "Szczegóły"
   },
   "character": {
-    "gender": {
+    "header": {
+      "data": "Dane",
+      "episodes": "Odcinki"
+    },
+    "status": "Status",
+    "species": "Gatunek",
+    "type": "Typ",
+    "gender": "Płeć",
+    "origin": "Pochodzenie",
+    "species_gender": {
       "human_male": "Mężczyzna",
       "human_female": "Kobieta",
       "other_male": "Samiec",
