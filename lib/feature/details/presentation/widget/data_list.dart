@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../common/presentation/widget/status_icon.dart';
 import '../../domain/model/character_details.dart';
+import 'data_card.dart';
 
 class DataList extends StatelessWidget {
   final CharacterDetails details;
@@ -12,26 +13,17 @@ class DataList extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SliverList(
           delegate: SliverChildListDelegate([
-        ListTile(
-          title: Text('character.status'.tr()),
-          subtitle: Text(details.status),
-          trailing: StatusIcon(
-            status: details.status,
-          ),
-        ),
-        ListTile(
-            title: Text('character.species'.tr()),
-            subtitle: Text(details.species)),
-        details.type.isNotEmpty
-            ? ListTile(
-                title: Text('character.type'.tr()),
-                subtitle: Text(details.type))
-            : const SizedBox.shrink(),
-        ListTile(
-            title: Text('character.gender'.tr()),
-            subtitle: Text(details.speciesGender.tr())),
-        ListTile(
-            title: Text('character.origin'.tr()),
-            subtitle: Text(details.origin.name)),
+        DataCard(
+            label: 'character.status'.tr(),
+            text: details.status,
+            icon: StatusIcon(
+              status: details.status,
+            )),
+        DataCard(label: 'character.species'.tr(), text: details.species),
+        DataCard(label: 'character.type'.tr(), text: details.type),
+        DataCard(
+            label: 'character.gender'.tr(), text: details.speciesGender.tr()),
+        DataCard(label: 'character.origin'.tr(), text: details.origin.name),
+        DataCard(label: 'character.species'.tr(), text: details.species),
       ]));
 }
