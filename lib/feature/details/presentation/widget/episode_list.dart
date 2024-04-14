@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/model/episode.dart';
+import 'episode_card.dart';
 
 class EpisodeList extends StatelessWidget {
   final List<Episode> list;
@@ -9,9 +10,7 @@ class EpisodeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SliverList(
       delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) => ListTile(
-                title: Text(
-                    '${list[index].id}: "${list[index].title} [${list[index].number}]"'),
-              ),
+          (BuildContext context, int index) =>
+              EpisodeCard(title: list[index].title, number: list[index].number),
           childCount: list.length));
 }
