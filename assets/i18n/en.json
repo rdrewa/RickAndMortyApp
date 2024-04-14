@@ -25,6 +25,7 @@
     "type": "Type",
     "gender": "Gender",
     "origin": "Origin",
+    "location": "Location",
     "species_gender": {
       "human_male": "Man",
       "human_female": "Woman",
