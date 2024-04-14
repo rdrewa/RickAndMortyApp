@@ -16,7 +16,16 @@
     "title": "Details"
   },
   "character": {
-    "gender": {
+    "header": {
+      "data": "Data",
+      "episodes": "Episodes"
+    },
+    "status": "Status",
+    "species": "Species",
+    "type": "Type",
+    "gender": "Gender",
+    "origin": "Origin",
+    "species_gender": {
       "human_male": "Man",
       "human_female": "Woman",
       "other_male": "Male",

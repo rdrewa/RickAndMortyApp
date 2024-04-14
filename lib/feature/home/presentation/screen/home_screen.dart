@@ -34,6 +34,7 @@ class HomeScreen extends HookConsumerWidget {
           HomeInitial() => const SizedBox.shrink(),
           HomeLoading() => const LargeProgressWheel(),
           HomeLoaded() => ListView.builder(
+              physics: const ClampingScrollPhysics(),
               controller: controller,
               itemCount: state.data.length + (state.canLoad ? 1 : 0),
               itemBuilder: (context, index) => index >= state.data.length

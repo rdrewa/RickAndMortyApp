@@ -24,6 +24,7 @@ dependencies:
   google_fonts: ^4.0.4
   easy_localization: ^3.0.5
   envied: ^0.5.4+1
+  sliver_tools: ^0.2.12
 
 dev_dependencies:
   flutter_test:
