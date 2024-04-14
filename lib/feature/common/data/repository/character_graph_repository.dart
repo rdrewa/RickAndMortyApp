@@ -33,10 +33,10 @@ class CharacterGraphRepository implements CharacterRepository {
       } else {
         return Right(data.characters);
       }
-    } on OperationException catch (e) {
-      return Left(ServerFailure(e.toString()));
-    } on Exception catch (e) {
-      return Left(ServerFailure(e.toString()));
+    } on OperationException {
+      return const Left(ServerFailure('Operation Failure'));
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
     }
   }
 
@@ -50,10 +50,10 @@ class CharacterGraphRepository implements CharacterRepository {
       } else {
         return Right(data.characterDetails);
       }
-    } on OperationException catch (e) {
-      return Left(ServerFailure(e.toString()));
-    } on Exception catch (e) {
-      return Left(ServerFailure(e.toString()));
+    } on OperationException {
+      return const Left(ServerFailure('Operation Failure'));
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
     }
   }
 }
