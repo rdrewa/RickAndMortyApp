@@ -56,7 +56,7 @@ class RickGraphService implements RickService {
   Future<CharacterDetailsData?> getCharacterDetails(int id) async {
     try {
       QueryResult result = await client.query(QueryOptions(document: gql("""
-           query characters(\$id: Int) {
+           query characters(\$id: ID!) {
               character(id: \$id) {
                 name
                 id
@@ -68,6 +68,7 @@ class RickGraphService implements RickService {
                   name
                   created
                 }
+                gender
                 episode {
                   id
                   name
