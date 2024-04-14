@@ -15,6 +15,7 @@ class CharacterDetails {
   final String image;
   final String species;
   final Origin origin;
+  final String gender;
   final List<Episode> episode;
   final Location location;
 
@@ -26,6 +27,7 @@ class CharacterDetails {
     required this.image,
     required this.species,
     required this.origin,
+    required this.gender,
     required this.episode,
     required this.location,
   });
@@ -34,4 +36,7 @@ class CharacterDetails {
       _$CharacterDetailsFromJson(data);
 
   Map<String, dynamic> toJson() => _$CharacterDetailsToJson(this);
+
+  String get speciesGender =>
+      'character.species_gender.${species == 'Human' ? 'human' : 'other'}_${gender.toLowerCase()}';
 }

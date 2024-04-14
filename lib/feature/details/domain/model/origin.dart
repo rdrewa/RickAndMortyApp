@@ -5,7 +5,7 @@ part 'origin.g.dart';
 @JsonSerializable()
 class Origin {
   final String name;
-  final DateTime created;
+  final DateTime? created;
 
   Origin({
     required this.name,
