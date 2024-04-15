@@ -32,7 +32,7 @@ void main() {
           QueryResult(
               options: queryOptions,
               source: QueryResultSource.network,
-              data: json.decode(fixture('character_list'))));
+              data: json.decode(fixture('character_info_data'))));
 
       // act
       final result = await rickService.getCharacterList(1);

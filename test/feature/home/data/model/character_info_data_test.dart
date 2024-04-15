@@ -9,7 +9,8 @@ import '../../../../util/fixture.dart';
 void main() {
   test('Should return a valid model CharacterInfoData from JSON', () async {
     // arrange
-    final Map<String, dynamic> jsonMap = json.decode(fixture('character_list'));
+    final Map<String, dynamic> jsonMap =
+        json.decode(fixture('character_info_data'));
 
     // act
     final result = CharacterInfoData.fromJson(jsonMap);
