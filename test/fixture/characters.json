@@ -1,0 +1,28 @@
+{
+  "info": {
+    "next": null
+  },
+  "results": [
+    {
+      "name": "Rick Sanchez",
+      "id": "1",
+      "status": "Alive",
+      "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      "species": "Human"
+    },
+    {
+      "name": "Morty Smith",
+      "id": "2",
+      "status": "Alive",
+      "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+      "species": "Human"
+    },
+    {
+      "name": "Summer Smith",
+      "id": "3",
+      "status": "Alive",
+      "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      "species": "Human"
+    }
+  ]
+}
