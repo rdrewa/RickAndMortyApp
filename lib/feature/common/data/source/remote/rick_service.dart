@@ -5,6 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../../home/data/model/character_info_data.dart';
 import '../../../../details/data/model/character_details_data.dart';
 import 'graph_client.dart';
+import 'queries.dart';
 
 part 'rick_service.g.dart';
 
@@ -25,22 +26,8 @@ class RickGraphService implements RickService {
   @override
   Future<CharacterInfoData?> getCharacterList(int page) async {
     try {
-      QueryResult result = await client.query(QueryOptions(document: gql("""
-           query characters(\$page: Int) {
-              characters(page: \$page) {
-                info {
-                  next
-                }
-                results {
-                  name
-                  id
-                  status
-                  image
-                  species
-                }
-              }
-            }
-            """), variables: {'page': page}));
+      QueryResult result = await client.query(QueryOptions(
+          document: gql(Queries.characterList), variables: {'page': page}));
       if (result.hasException) {
         throw Exception(result.exception);
       } else {
@@ -55,32 +42,8 @@ class RickGraphService implements RickService {
   @override
   Future<CharacterDetailsData?> getCharacterDetails(int id) async {
     try {
-      QueryResult result = await client.query(QueryOptions(document: gql("""
-           query characters(\$id: ID!) {
-              character(id: \$id) {
-                name
-                id
-                status
-                type
-                image
-                species
-                origin {
-                  name
-                  created
-                }
-                gender
-                episode {
-                  id
-                  name
-                  episode
-                }
-                location {
-                  name
-                  dimension
-                }
-              }
-            }
-            """), variables: {'id': id}));
+      QueryResult result = await client.query(QueryOptions(
+          document: gql(Queries.characterDetails), variables: {'id': id}));
       if (result.hasException) {
         throw Exception(result.exception);
       } else {

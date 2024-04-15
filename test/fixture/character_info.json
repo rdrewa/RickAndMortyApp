@@ -1,0 +1,7 @@
+{
+  "name": "Rick Sanchez",
+  "id": "1",
+  "status": "Alive",
+  "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  "species": "Human"
+}
