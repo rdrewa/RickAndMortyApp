@@ -11,7 +11,7 @@ part 'favorite_db_repository.g.dart';
 
 @riverpod
 FavoriteDbRepository favoriteDbRepository(FavoriteDbRepositoryRef ref) =>
-    FavoriteDbRepository(ref.watch(rickDatabaseProvider));
+    FavoriteDbRepository(ref.read(rickDatabaseProvider));
 
 class FavoriteDbRepository implements FavoriteRepository {
   final RickDatabase _database;
