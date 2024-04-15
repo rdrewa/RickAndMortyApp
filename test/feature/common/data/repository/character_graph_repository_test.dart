@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mockito/mockito.dart';
+
 import 'package:rick_morty_app/core/error/failure.dart';
 import 'package:rick_morty_app/feature/common/data/repository/character_graph_repository.dart';
-import 'package:rick_morty_app/feature/home/domain/model/character_info.dart';
 
 import '../../../../util/data.dart';
 import '../../../../util/mocks.mocks.dart';
