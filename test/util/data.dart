@@ -35,7 +35,7 @@ final testCharacterInfoList1 = [
   testCharacterInfo3
 ];
 
-final testInfo1 = Info(next: null);
+const testInfo1 = Info(next: null);
 
 final testCharacters1 =
     Characters(info: testInfo1, results: testCharacterInfoList1);
@@ -45,12 +45,12 @@ final testCharacterInfoData1 = CharacterInfoData(characters: testCharacters1);
 final testOrigin1 = Origin(
     name: 'Earth (C-137)', created: DateTime.parse('2017-11-10T12:42:04.162Z'));
 
-final testEpisode1 = Episode(id: "1", title: "Pilot", number: "S01E01");
-final testEpisode2 = Episode(id: "2", title: "Lawnmower Dog", number: "S01E02");
+const testEpisode1 = Episode(id: "1", title: "Pilot", number: "S01E01");
+const testEpisode2 = Episode(id: "2", title: "Lawnmower Dog", number: "S01E02");
 
 final testEpisodeList1 = [testEpisode1, testEpisode2];
 
-final testLocation1 = Location(name: 'Citadel of Ricks', dimension: 'unknown');
+const testLocation1 = Location(name: 'Citadel of Ricks', dimension: 'unknown');
 
 final testCharacterDetails1 = CharacterDetails(
     name: 'Rick Sanchez',
