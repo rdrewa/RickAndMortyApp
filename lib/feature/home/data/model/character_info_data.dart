@@ -17,5 +17,5 @@ class CharacterInfoData extends Equatable {
   Map<String, dynamic> toJson() => _$CharacterInfoDataToJson(this);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [characters];
 }
