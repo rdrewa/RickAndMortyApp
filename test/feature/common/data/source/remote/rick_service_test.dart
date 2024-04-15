@@ -53,7 +53,7 @@ void main() {
           QueryResult(
               options: queryOptions,
               source: QueryResultSource.optimisticResult,
-              data: json.decode(fixture('character_details'))));
+              data: json.decode(fixture('character_details_data'))));
 
       // act
       final result = await rickService.getCharacterDetails(1);

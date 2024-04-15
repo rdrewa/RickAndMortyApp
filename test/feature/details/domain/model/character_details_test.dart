@@ -10,7 +10,7 @@ void main() {
   test('Should return a valid model CharacterDetails from JSON', () async {
     // arrange
     final Map<String, dynamic> jsonMap =
-        json.decode(fixture('character_details_1'));
+        json.decode(fixture('character_details'));
 
     // act
     final result = CharacterDetails.fromJson(jsonMap);
