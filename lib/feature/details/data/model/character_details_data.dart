@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/model/character_details.dart';
@@ -5,11 +6,11 @@ import '../../domain/model/character_details.dart';
 part 'character_details_data.g.dart';
 
 @JsonSerializable()
-class CharacterDetailsData {
+class CharacterDetailsData extends Equatable {
   @JsonKey(name: 'character')
   final CharacterDetails characterDetails;
 
-  CharacterDetailsData({
+  const CharacterDetailsData({
     required this.characterDetails,
   });
 
@@ -17,4 +18,7 @@ class CharacterDetailsData {
       _$CharacterDetailsDataFromJson(data);
 
   Map<String, dynamic> toJson() => _$CharacterDetailsDataToJson(this);
+
+  @override
+  List<Object?> get props => [characterDetails];
 }
