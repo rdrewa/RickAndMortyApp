@@ -3,9 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rick_morty_app/core/extension/build_context_theme_extension.dart';
-import 'package:rick_morty_app/feature/common/presentation/widget/error_box.dart';
 
+import '/core/extension/build_context_theme_extension.dart';
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/empty_box.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../../../common/presentation/widget/app_drawer.dart';
@@ -30,7 +30,7 @@ class FavoriteScreen extends HookConsumerWidget {
         body: switch (state) {
           FavoriteListInitial() => const SizedBox.shrink(),
           FavoriteListEmpty() => EmptyBox(
-              message: 'favorites.empty'.tr(),
+              message: 'favorite.empty'.tr(),
             ),
           FavoriteListLoading() => const LargeProgressWheel(),
           FavoriteListLoaded() => ListView.builder(

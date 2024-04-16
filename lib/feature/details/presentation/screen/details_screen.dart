@@ -30,10 +30,10 @@ class DetailsScreen extends HookConsumerWidget {
       DetailsLoading() => const LargeProgressWheel(),
       DetailsLoaded() => CustomScrollView(
           slivers: [
-            TopInfo(name: state.data.name, image: state.data.image),
-            PinnedHeader(header: 'Data'.tr()),
+            TopInfo(details: state.data),
+            PinnedHeader(header: 'character.header.data'.tr()),
             DataList(details: state.data),
-            PinnedHeader(header: 'Episodes'.tr()),
+            PinnedHeader(header: 'character.header.episodes'.tr()),
             EpisodeList(list: state.data.episode),
           ],
         ),
