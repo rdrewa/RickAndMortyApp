@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../details/domain/model/character_details.dart';
 import '../../../common/data/source/local/rick_database.dart';
 
 part 'character_info.g.dart';
@@ -42,4 +43,11 @@ class CharacterInfo extends Equatable {
       status: Value(status),
       image: Value(image),
       species: Value(species));
+
+  factory CharacterInfo.fromDetails(CharacterDetails details) => CharacterInfo(
+      name: details.name,
+      id: details.id,
+      status: details.status,
+      image: details.image,
+      species: details.species);
 }
