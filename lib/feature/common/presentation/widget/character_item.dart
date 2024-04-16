@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 
 import '/app/app_router.dart';
 import '/core/extension/build_context_theme_extension.dart';
-import '../../../common/presentation/widget/status_icon.dart';
-import '../../domain/model/character_info.dart';
+import 'status_icon.dart';
+import '../../../home/domain/model/character_info.dart';
 
 class CharacterItem extends StatelessWidget {
   final CharacterInfo item;
+  final Color? color;
 
-  const CharacterItem({super.key, required this.item});
+  const CharacterItem({super.key, required this.item, this.color});
 
   @override
   Widget build(BuildContext context) => Card(
+        color: color,
         child: ListTile(
           leading: Image(image: NetworkImage(item.image)),
           title: Text(item.name, style: context.titleMedium),
