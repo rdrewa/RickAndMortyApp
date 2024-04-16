@@ -11,7 +11,14 @@
     "empty": "No favorites"
   },
   "settings": {
-    "title": "Settings"
+    "title": "Settings",
+    "header": "Common",
+    "language": "Language",
+    "dark_theme": "Enable dark theme",
+    "langs": {
+      "en": "English",
+      "pl": "Polish"
+    }
   },
   "details": {
     "title": "Details"

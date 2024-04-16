@@ -25,7 +25,7 @@ class FavoriteScreen extends HookConsumerWidget {
     final state = ref.watch(favoriteListNotifierProvider);
 
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(title: Text('favorite.title'.tr())),
         drawer: const AppDrawer(),
         body: switch (state) {
           FavoriteListInitial() => const SizedBox.shrink(),

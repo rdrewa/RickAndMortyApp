@@ -11,7 +11,14 @@
     "empty": "Brak ulubionych"
   },
   "settings": {
-    "title": "Ustawienia"
+    "title": "Ustawienia",
+    "header": "Ogólne",
+    "language": "Język",
+    "dark_theme": "Włącz ciemny motyw",
+    "langs": {
+      "en": "angielski",
+      "pl": "polski"
+    }
   },
   "details": {
     "title": "Szczegóły"
