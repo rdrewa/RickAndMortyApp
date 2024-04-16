@@ -26,7 +26,8 @@ class RickDatabase extends _$RickDatabase {
       await select(favorite).get();
 
   Future<FavoriteData?> getFavorite(int id) async =>
-      await (select(favorite)..where((tbl) => tbl.id.equals(id))).getSingle();
+      await (select(favorite)..where((tbl) => tbl.id.equals(id)))
+          .getSingleOrNull();
 
   Future<bool> updateFavorite(FavoriteCompanion companion) async =>
       await update(favorite).replace(companion);
