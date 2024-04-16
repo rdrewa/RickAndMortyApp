@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rick_morty_app/theme/app_card_theme.dart';
 import 'package:rick_morty_app/theme/app_custom_colors.dart';
 
 import 'app_app_bar_theme.dart';
 import 'app_text_theme.dart';
 import 'app_color_scheme.dart';
+
+final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
 
 class AppTheme {
   AppTheme._();
