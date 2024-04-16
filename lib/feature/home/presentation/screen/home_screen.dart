@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/app_drawer.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
-import '../widget/character_item.dart';
+import '../../../common/presentation/widget/character_item.dart';
 import '../notifier/home_notifier.dart';
 
 @RoutePage()
@@ -40,7 +41,7 @@ class HomeScreen extends HookConsumerWidget {
               itemBuilder: (context, index) => index >= state.data.length
                   ? const SmallProgressWheel()
                   : CharacterItem(item: state.data[index])),
-          HomeFailure() => Center(child: Text(state.message)),
+          HomeFailure() => ErrorBox(message: state.message),
         });
   }
 }

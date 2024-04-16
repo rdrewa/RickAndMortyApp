@@ -7,7 +7,8 @@
     "title": "Characters"
   },
   "favorite": {
-    "title": "Favorite"
+    "title": "Favorite",
+    "empty": "No favorites"
   },
   "settings": {
     "title": "Settings"
