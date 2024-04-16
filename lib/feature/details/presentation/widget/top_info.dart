@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'favorite_icon.dart';
+
+import '../../../home/domain/model/character_info.dart';
+import '../../domain/model/character_details.dart';
 
 class TopInfo extends StatelessWidget {
-  final String name;
-  final String image;
+  final CharacterDetails details;
 
-  const TopInfo({super.key, required this.name, required this.image});
+  const TopInfo({super.key, required this.details});
 
   @override
   Widget build(BuildContext context) => SliverAppBar(
         expandedHeight: 240,
         floating: true,
         pinned: true,
+        actions: [FavoriteIcon(item: CharacterInfo.fromDetails(details))],
         flexibleSpace: FlexibleSpaceBar(
-          title: Text(name),
+          title: Text(details.name),
           collapseMode: CollapseMode.pin,
           background: Image.network(
-            image,
+            details.image,
             fit: BoxFit.cover,
           ),
         ),
