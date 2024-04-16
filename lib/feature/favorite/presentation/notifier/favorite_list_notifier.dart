@@ -20,8 +20,6 @@ class FavoriteListNotifier extends _$FavoriteListNotifier {
     await Future.delayed(Duration.zero);
     state = FavoriteListLoading();
 
-    // await Future.delayed(const Duration(seconds: 17));
-
     (await _getFavoriteListUsecase()).fold(
         (fail) => state = FavoriteListFailure(fail.message),
         (data) => state =
