@@ -7,7 +7,8 @@
     "title": "Postacie"
   },
   "favorite": {
-    "title": "Ulubione"
+    "title": "Ulubione",
+    "empty": "Brak ulubionych"
   },
   "settings": {
     "title": "Ustawienia"
