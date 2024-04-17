@@ -21,7 +21,7 @@ class FavoriteDbRepository implements FavoriteRepository {
   @override
   Future<Either<Failure, void>> addItem(CharacterInfo item) async {
     try {
-      await _database.insertFavorite(item.toFavorite());
+      await _database.insertFavorite(item.toFavoriteCompanion());
       return const Right(null);
     } on SqliteException catch (s) {
       return Left(DatabaseFailure(s.message));
