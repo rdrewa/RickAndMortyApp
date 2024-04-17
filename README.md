@@ -42,6 +42,73 @@ A codename for this project is **RMRA** and it is used as a prefix for tasks, co
 | ![][11] | ![][12]   | ![][13]     | ![][14]     | ![][15]    | ![][16]    | ![][17]     |
 | ![][21] | ![][22]   | ![][23]     | ![][24]     | ![][25]    | ![][26]    | ![][27]     |
 
+# Folder (package) structure
+
+```bash
+├── lib
+│   ├── app
+│   │   ├── app_router.dart
+│   │   ├── config.dart
+│   │   └── rick_morty_app.dart
+│   ├── core
+│   │   ├── error
+│   │   │   └── failure.dart
+│   │   ├── extension
+│   │   │   ├── build_context_theme_extension.dart
+│   │   ├── util
+│   │   │   └── language_util.dart
+│   ├── feature
+│   │   ├── common
+│   │   ├── details
+│   │   ├── favorite
+│   │   ├── home
+│   │   │   ├── data
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── source/
+│   │   │   │       ├── local/
+│   │   │   │       └── remote/
+│   │   │   ├── domain/
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── usecase/
+│   │   │   └── presentation/
+│   │   │       ├── notifier/
+│   │   │       ├── screen/
+│   │   │       └── widget/
+│   │   ├── settings/
+│   ├── theme/
+│   │   ├── app_app_bar_theme.dart
+│   │   ├── app_card_theme.dart
+│   │   ├── app_color_theme.dart
+│   │   ├── app_custom_colors.dart
+│   │   ├── app_text_theme.dart
+│   │   ├── app_theme.dart
+│   │   └── custom_colors.dart
+├── test
+│   ├── feature/
+│   │   ├── [feature-name]/
+│   │   │   ├── data/
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── source/
+│   │   │   │       ├── local/
+│   │   │   │       └── remote/
+│   │   │   ├── domain
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── usecase/
+│   │   │   └── presentation/
+│   │   │       ├── notifier/
+│   │   │       └── screen/
+│   ├── fixture/
+│   └── util/
+├── ...
+└── .
+```
+
+It is not exact folders hierarchy. In feature some folder can be omitted, because some classes are shared and placed in common.
+
 [11]: screenshots/android/light/android-light-01_home.png
 [12]: screenshots/android/light/android-light-02_drawer.png
 [13]: screenshots/android/light/android-light-03_favorite.png
