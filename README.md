@@ -45,5 +45,5 @@ A codename for this project is **RMRA** and it is used as a prefix for tasks, co
 [43]: screenshots/ios/dark/ios-dark-03_favorite.png
 [44]: screenshots/ios/dark/ios-dark-04_favorite.png
 [45]: screenshots/ios/dark/ios-dark-05_details.png
-[46]: screenshots/ios/ldarkight/ios-dark-06_details.png
+[46]: screenshots/ios/dark/ios-dark-06_details.png
 [47]: screenshots/ios/dark/ios-dark-07_settings.png
