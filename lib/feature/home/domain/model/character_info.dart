@@ -37,12 +37,19 @@ class CharacterInfo extends Equatable {
       image: data.image,
       species: data.species);
 
-  FavoriteCompanion toFavorite() => FavoriteCompanion(
+  FavoriteCompanion toFavoriteCompanion() => FavoriteCompanion(
       id: Value(int.parse(id)),
       name: Value(name),
       status: Value(status),
       image: Value(image),
       species: Value(species));
+
+  FavoriteData toFavoriteData() => FavoriteData(
+      id: int.parse(id),
+      name: name,
+      status: status,
+      image: image,
+      species: species);
 
   factory CharacterInfo.fromDetails(CharacterDetails details) => CharacterInfo(
       name: details.name,
