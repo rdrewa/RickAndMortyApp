@@ -1,6 +1,6 @@
 # Rick&MortyApp
 
-A simple app to demonstrate Clean Architecture with GraphQL and [Riverpod](https://riverpod.dev/) state management.\
+A simple app to demonstrate Clean Architecture with **GraphQL** and [Riverpod](https://riverpod.dev/) state management.\
 A codename for this project is **RMRA** and it is used as a prefix for tasks, commits & branches. Tasks are Git issues.
 
 ## Implementation Details:
@@ -41,6 +41,25 @@ A codename for this project is **RMRA** and it is used as a prefix for tasks, co
 | ------- | --------- | ----------- | ----------- | ---------- | ---------- | ----------- |
 | ![][11] | ![][12]   | ![][13]     | ![][14]     | ![][15]    | ![][16]    | ![][17]     |
 | ![][21] | ![][22]   | ![][23]     | ![][24]     | ![][25]    | ![][26]    | ![][27]     |
+
+## Installation
+
+- Clone the repo
+  ```sh
+  git clone https://github.com/rdrewa/RickAndMortyApp.git
+  ```
+- In root project directory crearte `.env` file. Put content below.
+  ![][00]
+
+- And then we can use the normal build and run procedure
+  ```sh
+  flutter pub get
+  flutter run
+  ```
+- Some files like `*.freezed.dart`, `*.g.dart`, `*.gr.dart` are auto generated. Usally those files should be added to `.gitignore`. Just run this command to regenerate them.
+  ```sh
+  dart pub run build_runner watch --delete-conflicting-outputs
+  ```
 
 # Folder (package) structure
 
@@ -109,6 +128,7 @@ A codename for this project is **RMRA** and it is used as a prefix for tasks, co
 
 It is not exact folders hierarchy. In feature some folder can be omitted, because some classes are shared and placed in common.
 
+[00]: screenshots/env.png
 [11]: screenshots/android/light/android-light-01_home.png
 [12]: screenshots/android/light/android-light-02_drawer.png
 [13]: screenshots/android/light/android-light-03_favorite.png
