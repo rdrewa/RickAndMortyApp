@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '/app/app_router.dart';
 import '/core/extension/build_context_theme_extension.dart';
@@ -16,7 +17,7 @@ class CharacterItem extends StatelessWidget {
   Widget build(BuildContext context) => Card(
         color: color,
         child: ListTile(
-          leading: Image(image: NetworkImage(item.image)),
+          leading: Image(image: CachedNetworkImageProvider(item.image)),
           title: Text(item.name, style: context.titleMedium),
           subtitle: Text(item.species, style: context.bodySmall),
           trailing: StatusIcon(status: item.status),

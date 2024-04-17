@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'favorite_icon.dart';
 
@@ -18,8 +19,8 @@ class TopInfo extends StatelessWidget {
         flexibleSpace: FlexibleSpaceBar(
           title: Text(details.name),
           collapseMode: CollapseMode.pin,
-          background: Image.network(
-            details.image,
+          background: Image(
+            image: CachedNetworkImageProvider(details.image),
             fit: BoxFit.cover,
           ),
         ),
