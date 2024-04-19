@@ -1,6 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mockito/annotations.dart';
-import 'package:rick_morty_app/feature/common/data/source/local/rick_database.dart';
 
 import 'package:rick_morty_app/feature/common/data/source/remote/rick_service.dart';
 import 'package:rick_morty_app/feature/common/domain/repository/character_repository.dart';
@@ -17,7 +16,6 @@ import 'package:rick_morty_app/feature/home/domain/usecase/get_character_list_us
   MockSpec<GraphQLClient>(),
   MockSpec<CharacterRepository>(),
   MockSpec<FavoriteRepository>(),
-  MockSpec<RickDatabase>(),
   MockSpec<GetCharacterListUsecase>(),
   MockSpec<GetCharacterDetailsUsecase>(),
   MockSpec<GetFavoriteListUsecase>(),

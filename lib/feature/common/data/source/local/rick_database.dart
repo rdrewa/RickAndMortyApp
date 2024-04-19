@@ -12,8 +12,8 @@ import '../../../../favorite/data/model/favorite.dart';
 part 'rick_database.g.dart';
 
 final RickDatabase _database = RickDatabase();
-@riverpod
-RickDatabase rickDatabase(RickDatabaseRef ref) => _database;
+final rickDatabaseProvider =
+    Provider.autoDispose<RickDatabase>((ref) => _database);
 
 @DriftDatabase(tables: [Favorite])
 class RickDatabase extends _$RickDatabase {
@@ -37,6 +37,8 @@ class RickDatabase extends _$RickDatabase {
 
   Future<int> deleteFavorite(int id) async =>
       await (delete(favorite)..where((tbl) => tbl.id.equals(id))).go();
+
+  RickDatabase.forTesting(super.e);
 }
 
 LazyDatabase _openConnection() {
