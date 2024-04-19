@@ -37,6 +37,8 @@ class RickDatabase extends _$RickDatabase {
 
   Future<int> deleteFavorite(int id) async =>
       await (delete(favorite)..where((tbl) => tbl.id.equals(id))).go();
+
+  RickDatabase.forTesting(super.e);
 }
 
 LazyDatabase _openConnection() {
