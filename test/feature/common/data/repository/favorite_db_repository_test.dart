@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 
 import 'package:rick_morty_app/core/error/failure.dart';
 import 'package:rick_morty_app/feature/common/data/repository/favorite_db_repository.dart';
@@ -10,29 +9,53 @@ import 'package:rick_morty_app/feature/common/domain/repository/favorite_reposit
 import 'package:rick_morty_app/feature/home/domain/model/character_info.dart';
 
 import '../../../../util/data.dart';
-import '../../../../util/mocks.mocks.dart';
 
 void main() {
-  late MockRickDatabase mockRickDatabase;
+  late RickDatabase rickDatabase;
   late FavoriteRepository favoriteRepository;
 
-  final List<FavoriteData> favoriteDataList = testCharacterInfoList1
-      .map((character) => character.toFavoriteData())
-      .toList();
-
   setUp(() {
-    mockRickDatabase = MockRickDatabase();
-    favoriteRepository = FavoriteDbRepository(mockRickDatabase);
+    rickDatabase = RickDatabase.forTesting(NativeDatabase.memory());
+    favoriteRepository = FavoriteDbRepository(rickDatabase);
   });
 
-  group('Get Favorite list', () {
-    const errorMessage = 'Database Error';
+  tearDown(() {
+    rickDatabase.close();
+  });
+
+  group('Get Favorite list #1', () {
+    test('Should create a Favorite item in database', () async {
+      // act / arrange
+      favoriteRepository.addItem(testCharacterInfo1);
+
+      // act
+      final Either<Failure, bool> result =
+          await favoriteRepository.isAdded(int.parse(testCharacterInfo1.id));
+
+      // assert
+      result.fold(
+          (left) => fail('test failed'), (right) => expect(right, true));
+    });
+
+    test('Should remove a Favorite item from database', () async {
+      // act / arrange
+      favoriteRepository.addItem(testCharacterInfo1);
+
+      // act
+      favoriteRepository.removeItem(testCharacterInfo1);
+      final Either<Failure, bool> result =
+          await favoriteRepository.isAdded(int.parse(testCharacterInfo1.id));
+
+      // assert
+      result.fold(
+          (left) => fail('test failed'), (right) => expect(right, false));
+    });
+
     test('Should return Favorite list when call to database is successful',
         () async {
-      // arrange
-
-      when(mockRickDatabase.getFavoriteList())
-          .thenAnswer((_) async => favoriteDataList);
+      for (var favorite in testCharacterInfoList1) {
+        rickDatabase.insertFavorite(favorite.toFavoriteCompanion());
+      }
 
       // act
       final Either<Failure, List<CharacterInfo>> result =
@@ -42,25 +65,5 @@ void main() {
       result.fold((left) => fail('test failed'),
           (right) => expect(right, testCharacterInfoList1));
     });
-
-    test('Should return failure when call to database is unsuccessful',
-        () async {
-      // arrange
-      when(mockRickDatabase.getFavoriteList())
-          .thenThrow(SqliteException(404, errorMessage));
-
-      // act
-      final Either<Failure, List<CharacterInfo>> result =
-          await favoriteRepository.getList();
-
-      // assert
-      expect(result, equals(const Left(DatabaseFailure(errorMessage))));
-    });
   });
 }
-
-/*
-Expected: Right<dynamic, List<CharacterInfo>>:<Right([CharacterInfo(Rick Sanchez, 1, Alive, https://rickandmortyapi.com/api/character/avatar/1.jpeg, Human), CharacterInfo(Morty Smith, 2, Alive, https://rickandmortyapi.com/api/character/avatar/2.jpeg, Human), CharacterInfo(Summer Smith, 3, Alive, https://rickandmortyapi.com/api/character/avatar/3.jpeg, Human)])>
-  Actual: Right<Failure, List<CharacterInfo>>:<Right([CharacterInfo(Rick Sanchez, 1, Alive, https://rickandmortyapi.com/api/character/avatar/1.jpeg, Human), CharacterInfo(Morty Smith, 2, Alive, https://rickandmortyapi.com/api/character/avatar/2.jpeg, Human), CharacterInfo(Summer Smith, 3, Alive, https://rickandmortyapi.com/api/character/avatar/3.jpeg, Human)])>
-
-*/
