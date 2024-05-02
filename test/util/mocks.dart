@@ -12,7 +12,7 @@ import 'package:rick_morty_app/feature/favorite/domain/usecase/get_favorite_list
 import 'package:rick_morty_app/feature/home/domain/usecase/get_character_list_usecase.dart';
 
 @GenerateNiceMocks([
-  MockSpec<RickGraphService>(),
+  MockSpec<RickService>(),
   MockSpec<GraphQLClient>(),
   MockSpec<CharacterRepository>(),
   MockSpec<FavoriteRepository>(),

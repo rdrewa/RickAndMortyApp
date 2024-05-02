@@ -5,13 +5,15 @@ import 'package:mockito/mockito.dart';
 
 import 'package:rick_morty_app/core/error/failure.dart';
 import 'package:rick_morty_app/feature/common/data/repository/character_graph_repository.dart';
+import 'package:rick_morty_app/feature/common/data/source/remote/rick_service.dart';
+import 'package:rick_morty_app/feature/common/domain/repository/character_repository.dart';
 
 import '../../../../util/data.dart';
 import '../../../../util/mocks.mocks.dart';
 
 void main() {
-  late MockRickGraphService mockRickGraphService;
-  late CharacterGraphRepository characterGraphRepository;
+  late RickGraphService mockRickGraphService;
+  late CharacterRepository characterGraphRepository;
 
   setUp(() {
     mockRickGraphService = MockRickGraphService();
