@@ -25,7 +25,7 @@ void main() {
 
   group('Get Favorite list #1', () {
     test('Should create a Favorite item in database', () async {
-      // act / arrange
+      // arrange
       favoriteRepository.addItem(testCharacterInfo1);
 
       // act
@@ -35,6 +35,21 @@ void main() {
       // assert
       result.fold(
           (left) => fail('test failed'), (right) => expect(right, true));
+    });
+
+    test(
+        'Should return a database failure when trying to the same item two times',
+        () async {
+      // arrange
+      favoriteRepository.addItem(testCharacterInfo1);
+
+      // act
+      Either<Failure, void> result =
+          await favoriteRepository.addItem(testCharacterInfo1);
+
+      // assert
+      result.fold(
+          (left) => expect(left, isA<DatabaseFailure>()), (right) => null);
     });
 
     test('Should remove a Favorite item from database', () async {
