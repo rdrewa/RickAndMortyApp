@@ -1,3 +1,5 @@
+import 'package:drift/drift.dart';
+import 'package:rick_morty_app/feature/common/data/source/local/rick_database.dart';
 import 'package:rick_morty_app/feature/details/data/model/character_details_data.dart';
 import 'package:rick_morty_app/feature/details/domain/model/character_details.dart';
 import 'package:rick_morty_app/feature/details/domain/model/episode.dart';
@@ -66,3 +68,17 @@ final testCharacterDetails1 = CharacterDetails(
 
 final testCharacterDetailsData1 =
     CharacterDetailsData(characterDetails: testCharacterDetails1);
+
+final favoriteCompanion1 = FavoriteCompanion(
+    id: Value(int.parse(testCharacterInfo1.id)),
+    name: Value(testCharacterInfo1.name),
+    status: Value(testCharacterInfo1.status),
+    image: Value(testCharacterInfo1.image),
+    species: Value(testCharacterInfo1.species));
+
+final favoriteData1 = FavoriteData(
+    id: int.parse(testCharacterInfo1.id),
+    name: testCharacterInfo1.name,
+    status: testCharacterInfo1.status,
+    image: testCharacterInfo1.image,
+    species: testCharacterInfo1.species);
