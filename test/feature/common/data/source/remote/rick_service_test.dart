@@ -13,7 +13,7 @@ import '../../../../../util/fixture.dart';
 import '../../../../../util/mocks.mocks.dart';
 
 void main() {
-  late MockGraphQLClient mockGraphQLClient;
+  late GraphQLClient mockGraphQLClient;
   late RickService rickService;
 
   setUp(() {
@@ -41,6 +41,32 @@ void main() {
       expect(result, isA<CharacterInfoData>());
       expect(result?.characters, testCharacters1);
     });
+
+    test('Should return Exception when QueryResult has an Exception', () async {
+      // arrange
+      final queryOptions = QueryOptions(
+          document: gql(Queries.characterList), variables: const {'page': 1});
+
+      when(mockGraphQLClient.query(queryOptions)).thenAnswer((_) async =>
+          QueryResult(
+              options: queryOptions,
+              source: QueryResultSource.network,
+              exception: OperationException()));
+
+      // act / assert
+      expect(() => rickService.getCharacterList(1), throwsA(isA<Exception>()));
+    });
+
+    test('Should return Exception when client rethrown an Exception', () async {
+      // arrange
+      final queryOptions = QueryOptions(
+          document: gql(Queries.characterList), variables: const {'page': 1});
+
+      when(mockGraphQLClient.query(queryOptions)).thenThrow(Exception());
+
+      // act / assert
+      expect(() => rickService.getCharacterList(1), throwsA(isA<Exception>()));
+    });
   });
 
   group('Get CharacterDetails data', () {
@@ -61,6 +87,33 @@ void main() {
       // assert
       expect(result, isA<CharacterDetailsData>());
       expect(result?.characterDetails, testCharacterDetails1);
+    });
+
+    test('Should return Exception when QueryResult has an Exception', () async {
+      // arrange
+      final queryOptions = QueryOptions(
+          document: gql(Queries.characterDetails), variables: const {'id': 1});
+      when(mockGraphQLClient.query(queryOptions)).thenAnswer((_) async =>
+          QueryResult(
+              options: queryOptions,
+              source: QueryResultSource.network,
+              exception: OperationException()));
+
+      // act / assert
+      expect(
+          () => rickService.getCharacterDetails(1), throwsA(isA<Exception>()));
+    });
+
+    test('Should return Exception when client rethrown an Exception', () async {
+      // arrange
+      final queryOptions = QueryOptions(
+          document: gql(Queries.characterDetails), variables: const {'id': 1});
+
+      when(mockGraphQLClient.query(queryOptions)).thenThrow(Exception());
+
+      // act / assert
+      expect(
+          () => rickService.getCharacterDetails(1), throwsA(isA<Exception>()));
     });
   });
 }

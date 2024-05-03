@@ -5,13 +5,15 @@ import 'package:mockito/mockito.dart';
 
 import 'package:rick_morty_app/core/error/failure.dart';
 import 'package:rick_morty_app/feature/common/data/repository/character_graph_repository.dart';
+import 'package:rick_morty_app/feature/common/data/source/remote/rick_service.dart';
+import 'package:rick_morty_app/feature/common/domain/repository/character_repository.dart';
 
 import '../../../../util/data.dart';
 import '../../../../util/mocks.mocks.dart';
 
 void main() {
-  late MockRickGraphService mockRickGraphService;
-  late CharacterGraphRepository characterGraphRepository;
+  late RickGraphService mockRickGraphService;
+  late CharacterRepository characterGraphRepository;
 
   setUp(() {
     mockRickGraphService = MockRickGraphService();
@@ -32,7 +34,25 @@ void main() {
       expect(result, equals(Right(testCharacters1)));
     });
 
-    test('Should return server failure when a call to service is unsuccessful',
+    test(
+        'Should return server failure when a call to service is successful, but data is null',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterList(1))
+          .thenAnswer((realInvocation) async => null);
+
+      // act
+      final result = await characterGraphRepository.getCharacterList(1);
+
+      // assert
+      expect(
+          result,
+          equals(
+              const Left(ServerFailure('Server Failure: null ResponseData'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of GraphQL or Link',
         () async {
       // arrange
       when(mockRickGraphService.getCharacterList(1))
@@ -43,6 +63,19 @@ void main() {
 
       // assert
       expect(result, equals(const Left(ServerFailure('Operation Failure'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of some general problem',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterList(1)).thenThrow(Exception());
+
+      // act
+      final result = await characterGraphRepository.getCharacterList(1);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
     });
   });
 
@@ -61,7 +94,25 @@ void main() {
       expect(result, equals(Right(testCharacterDetails1)));
     });
 
-    test('Should return server failure when a call to service is unsuccessful',
+    test(
+        'Should return server failure when a call to service is successful, but data is null',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1))
+          .thenAnswer((realInvocation) async => null);
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(
+          result,
+          equals(
+              const Left(ServerFailure('Server Failure: null ResponseData'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of GraphQL or Link',
         () async {
       // arrange
       when(mockRickGraphService.getCharacterDetails(1))
@@ -72,6 +123,19 @@ void main() {
 
       // assert
       expect(result, equals(const Left(ServerFailure('Operation Failure'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of some general problem',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1)).thenThrow(Exception());
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
     });
   });
 }
