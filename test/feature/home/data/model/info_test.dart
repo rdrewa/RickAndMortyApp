@@ -16,4 +16,15 @@ void main() {
     // assert
     expect(result, equals(testInfo1));
   });
+
+  test('Should return a valid JSON map from object ', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('info'));
+
+    // act
+    final Map<String, dynamic> result = testInfo1.toJson();
+
+    // assert
+    expect(result, equals(jsonMap));
+  });
 }
