@@ -34,7 +34,25 @@ void main() {
       expect(result, equals(Right(testCharacters1)));
     });
 
-    test('Should return server failure when a call to service is unsuccessful',
+    test(
+        'Should return server failure when a call to service is successful, but data is null',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterList(1))
+          .thenAnswer((realInvocation) async => null);
+
+      // act
+      final result = await characterGraphRepository.getCharacterList(1);
+
+      // assert
+      expect(
+          result,
+          equals(
+              const Left(ServerFailure('Server Failure: null ResponseData'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of GraphQL or Link',
         () async {
       // arrange
       when(mockRickGraphService.getCharacterList(1))
@@ -45,6 +63,19 @@ void main() {
 
       // assert
       expect(result, equals(const Left(ServerFailure('Operation Failure'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of some general problem',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterList(1)).thenThrow(Exception());
+
+      // act
+      final result = await characterGraphRepository.getCharacterList(1);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
     });
   });
 
@@ -63,7 +94,25 @@ void main() {
       expect(result, equals(Right(testCharacterDetails1)));
     });
 
-    test('Should return server failure when a call to service is unsuccessful',
+    test(
+        'Should return server failure when a call to service is successful, but data is null',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1))
+          .thenAnswer((realInvocation) async => null);
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(
+          result,
+          equals(
+              const Left(ServerFailure('Server Failure: null ResponseData'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of GraphQL or Link',
         () async {
       // arrange
       when(mockRickGraphService.getCharacterDetails(1))
@@ -74,6 +123,19 @@ void main() {
 
       // assert
       expect(result, equals(const Left(ServerFailure('Operation Failure'))));
+    });
+
+    test(
+        'Should return server failure when a call to service is unsuccessful because of some general problem',
+        () async {
+      // arrange
+      when(mockRickGraphService.getCharacterDetails(1)).thenThrow(Exception());
+
+      // act
+      final result = await characterGraphRepository.getCharacterDetaisl(1);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
     });
   });
 }
