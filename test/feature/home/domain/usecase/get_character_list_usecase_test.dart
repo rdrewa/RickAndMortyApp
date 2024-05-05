@@ -29,7 +29,7 @@ void main() {
     final result = await getCharacterListUsecase(1);
 
     // assert
-    expect(result, Right(testCharacters1));
+    expect(result, Right(testCharacterDetailsData1));
   });
 
   test('Should get Characters envelope empty from repository', () async {
