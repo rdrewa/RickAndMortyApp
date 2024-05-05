@@ -12,11 +12,11 @@ import '../../../../util/data.dart';
 import '../../../../util/mocks.mocks.dart';
 
 void main() {
-  late RickGraphService mockRickGraphService;
+  late RickService mockRickGraphService;
   late CharacterRepository characterGraphRepository;
 
   setUp(() {
-    mockRickGraphService = MockRickGraphService();
+    mockRickGraphService = MockRickService();
     characterGraphRepository = CharacterGraphRepository(mockRickGraphService);
   });
 
