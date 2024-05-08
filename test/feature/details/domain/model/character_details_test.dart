@@ -35,4 +35,20 @@ void main() {
     // assert
     expect(result, equals(jsonMap));
   });
+
+  test('Should return proper props list', () async {
+    // arrange / act
+    final result = testCharacterDetails1.props;
+
+    // assert
+    expect(result.length, 9);
+  });
+
+  test('Should return proper speciesGender', () async {
+    // arrange / act
+    final result = testCharacterDetails1.speciesGender;
+
+    // assert
+    expect(result, 'character.species_gender.human_male');
+  });
 }
