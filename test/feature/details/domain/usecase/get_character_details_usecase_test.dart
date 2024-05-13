@@ -21,7 +21,7 @@ void main() {
 
   test('Should get Character details from repository', () async {
     // arrange
-    when(mockCharacterRepository.getCharacterDetaisl(0))
+    when(mockCharacterRepository.getCharacterDetaisl(1))
         .thenAnswer((_) async => Right(testCharacterDetails1));
 
     // act
@@ -34,11 +34,11 @@ void main() {
   test('Should return failure when getting Character details', () async {
     // arrange
     const errorMessage = 'Server Failure';
-    when(mockCharacterRepository.getCharacterDetaisl(0))
+    when(mockCharacterRepository.getCharacterDetaisl(1))
         .thenAnswer((_) async => const Left(ServerFailure(errorMessage)));
 
     // act
-    final result = await getCharacterDetailsUsecase(0);
+    final result = await getCharacterDetailsUsecase(1);
 
     // assert
     expect(result, const Left(ServerFailure(errorMessage)));
